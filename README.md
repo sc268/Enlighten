@@ -6,7 +6,7 @@ What's this?
 - Based on [hightlight.js](https://highlightjs.org/).
 
 How to install it?
-- Download it, drag the "src" subfolder into [chrome extension folder](chrome://extensions). 
+- Download it, drag the "src" subfolder into chrome://extensions. 
 
 Contact
 - Sean Chang @seanschang

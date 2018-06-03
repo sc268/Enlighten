@@ -30,8 +30,8 @@ var PREFS = loadPrefs()
 function defaultPrefs() {
   return {
     siteList: [
-      'facebook.com',
-      'youtube.com'
+"def foo():",
+"    return 'bar'"
     ]
   }
 }
