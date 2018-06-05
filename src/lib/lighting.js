@@ -4,7 +4,7 @@ var form = document.getElementById('options-form'),
   startCallbacks = {}, durationEls = {};
   
 var code = document.getElementById('snippet');
-code.innerHTML = background.PREFS.siteList.join("\n");
+code.innerText = background.PREFS.siteList.join("\n");
 
 function enlighten() {
   var URL = "lighting.html"

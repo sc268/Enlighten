@@ -3,36 +3,25 @@ var form = document.getElementById('options-form'),
   saveSuccessfulEl = document.getElementById('save-successful'),
   background = chrome.extension.getBackgroundPage(),
   style = document.getElementById('style'),
+  language = document.getElementById('language'),
   startCallbacks = {}, durationEls = {};
   
 
 form.onsubmit = function () {
   console.log("form submitted");
-  var durations = {}, duration, durationStr, durationMatch;
-  
-  for(var key in durationEls) {
-    durationStr = durationEls[key].value;
-      console.log(durationMatch);
-      durations[key] = 60;
-  }
-  
-  console.log(durations);
-  
+  background.setLanguage(language.value);
+  background.setStyle(style.value);
   background.setPrefs({
     siteList:siteListEl.value.split(/\r?\n/),
   })
   saveSuccessfulEl.className = 'show';
+  
   return false;
 }
-
-  siteListEl.onfocus = formAltered;
-
-function formAltered() {
-  saveSuccessfulEl.removeAttribute('class');
-  timeFormatErrorEl.removeAttribute('class');
-}
-
-siteListEl.value = background.PREFS.siteList.join("\n");
+		
+language.value = background.LANGUAGE;
+style.value = background.STYLE;
+//siteListEl.value = background.PREFS.siteList.join("\n");
 
 
 function enlighten() {

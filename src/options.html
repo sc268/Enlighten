@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
-    <link rel="stylesheet" href="chrome://resources/css/widgets.css">
     <style type="text/css">
       body {
         font-family: 'Lucida Grande', sans-serif;
@@ -16,14 +14,14 @@
         width: 31em;
       }
 
-      h1 {
+      h3 {
         margin-top: 0;
-        font-size: 2.05em;
+        font-size: 1.15em;
         font-weight: normal;
       }
 
       #site-list-wrapper {
-        margin-bottom: 2em;
+        margin-bottom: 0em;
       }
 
       #site-list-header {
@@ -32,8 +30,8 @@
       }
 
       #site-list {
-        height: 16em;
-        width: 30em;
+        height: 8em;
+        width: 27em;
         padding: 5px;
         font: -webkit-control;
       }
@@ -97,23 +95,130 @@
     </style>
   </head>
   <body>
-    <h3>Enlighten - a syntax highlighting tool</h3>
     <p id="work-block-info" data-i18n="options_work_block_info"></p>
-    <form id="options-form", onsubmit="target_popup(this)">      
-        style: 
+    <form id="options-form", onsubmit="target_popup(this)">
+
         <select id="style">
-            <option value="sublime">github</option>
+			<option value="vs" selected>vs</option>
+			<option value="github">github</option>
+			<option value="agate">agate</option>
+			<option value="androidstudio">androidstudio</option>
+			<option value="arduino-light">arduino-light</option>
+			<option value="arta">arta</option>
+			<option value="ascetic">ascetic</option>
+			<option value="atelier-cave-dark">atelier-cave-dark</option>
+			<option value="atelier-cave-light">atelier-cave-light</option>
+			<option value="atelier-dune-dark">atelier-dune-dark</option>
+			<option value="atelier-dune-light">atelier-dune-light</option>
+			<option value="atelier-estuary-dark">atelier-estuary-dark</option>
+			<option value="atelier-estuary-light">atelier-estuary-light</option>
+			<option value="atelier-forest-dark">atelier-forest-dark</option>
+			<option value="atelier-forest-light">atelier-forest-light</option>
+			<option value="atelier-heath-dark">atelier-heath-dark</option>
+			<option value="atelier-heath-light">atelier-heath-light</option>
+			<option value="atelier-lakeside-dark">atelier-lakeside-dark</option>
+			<option value="atelier-lakeside-light">atelier-lakeside-light</option>
+			<option value="atelier-plateau-dark">atelier-plateau-dark</option>
+			<option value="atelier-plateau-light">atelier-plateau-light</option>
+			<option value="atelier-savanna-dark">atelier-savanna-dark</option>
+			<option value="atelier-savanna-light">atelier-savanna-light</option>
+			<option value="atelier-seaside-dark">atelier-seaside-dark</option>
+			<option value="atelier-seaside-light">atelier-seaside-light</option>
+			<option value="atelier-sulphurpool-dark">atelier-sulphurpool-dark</option>
+			<option value="atelier-sulphurpool-light">atelier-sulphurpool-light</option>
+			<option value="atom-one-dark">atom-one-dark</option>
+			<option value="atom-one-light">atom-one-light</option>
+			<option value="brown-paper">brown-paper</option>
+			<option value="codepen-embed">codepen-embed</option>
+			<option value="color-brewer">color-brewer</option>
+			<option value="darcula">darcula</option>
+			<option value="dark">dark</option>
+			<option value="darkula">darkula</option>
+			<option value="default">default</option>
+			<option value="docco">docco</option>
+			<option value="dracula">dracula</option>
+			<option value="far">far</option>
+			<option value="foundation">foundation</option>
+			<option value="github-gist">github-gist</option>
+			<option value="googlecode">googlecode</option>
+			<option value="grayscale">grayscale</option>
+			<option value="gruvbox-dark">gruvbox-dark</option>
+			<option value="gruvbox-light">gruvbox-light</option>
+			<option value="hopscotch">hopscotch</option>
+			<option value="hybrid">hybrid</option>
+			<option value="idea">idea</option>
+			<option value="ir-black">ir-black</option>
+			<option value="kimbie.dark">kimbie.dark</option>
+			<option value="kimbie.light">kimbie.light</option>
+			<option value="magula">magula</option>
+			<option value="mono-blue">mono-blue</option>
+			<option value="monokai">monokai</option>
+			<option value="monokai-sublime">monokai-sublime</option>
+			<option value="obsidian">obsidian</option>
+			<option value="ocean">ocean</option>
+			<option value="paraiso-dark">paraiso-dark</option>
+			<option value="paraiso-light">paraiso-light</option>
+			<option value="pojoaque">pojoaque</option>
+			<option value="purebasic">purebasic</option>
+			<option value="qtcreator_dark">qtcreator_dark</option>
+			<option value="qtcreator_light">qtcreator_light</option>
+			<option value="railscasts">railscasts</option>
+			<option value="rainbow">rainbow</option>
+			<option value="routeros">routeros</option>
+			<option value="school-book">school-book</option>
+			<option value="solarized-dark">solarized-dark</option>
+			<option value="solarized-light">solarized-light</option>
+			<option value="sunburst">sunburst</option>
+			<option value="tomorrow">tomorrow</option>
+			<option value="tomorrow-night-blue">tomorrow-night-blue</option>
+			<option value="tomorrow-night-bright">tomorrow-night-bright</option>
+			<option value="tomorrow-night">tomorrow-night</option>
+			<option value="tomorrow-night-eighties">tomorrow-night-eighties</option>
+			<option value="vs2015">vs2015</option>
+			<option value="xcode">xcode</option>
+			<option value="xt256">xt256</option>
+			<option value="zenburn">zenburn</option>
         </select>
+		<select id="language">
+            <option value="auto" selected>auto detected</option>
+			<option value="html">html</option>
+			<option value="python">python</option>
+			<option value="cmake">cmake</option>
+			<option value="perl">perl</option>
+			<option value="clojure">clojure</option>
+      <option value="bash">bash</option>
+      <option value="cpp">cpp</option>
+      <option value="arduino">arduino</option>
+      <option value="dockerfile">dockerfile</option>
+      <option value="css">css</option>
+      <option value="nginx">nginx</option>
+      <option value="xml">xml</option>
+      <option value="coffeescript">coffeescript</option>
+      <option value="shell">shell</option>
+      <option value="sql">sql</option>
+      <option value="objectivec">objectivec</option>
+      <option value="matlab">matlab</option>
+      <option value="apache">apache</option>
+      <option value="markdown">markdown</option>
+      <option value="javascript">javascript</option>
+      <option value="makefile">makefile</option>
+      <option value="java">java</option>
+      <option value="http">http</option>
+      <option value="ini">ini</option>
+      <option value="makefile">makefile</option>
+      <option value="ruby">ruby</option>
+      <option value="diff">diff</option>
+        </select>
+
+      <button type="submit" id="save-button" data-i18n="options_save_changes">hightlight</button>
+
       <div id="site-list-wrapper">
-        <textarea id="site-list">
-          def foo():
-             return 'bar'
+        <textarea id="site-list", placeholder="def foo():
+			return 'bar'">
         </textarea>
       </div>
-      <button type="submit" id="save-button" data-i18n="options_save_changes">hightlight it</button>
       <script type="text/javascript" src="options.js"></script>
       <span id="save-successful" data-i18n="options_save_successful"></span>
     </form>
   </body>
 </html>
-

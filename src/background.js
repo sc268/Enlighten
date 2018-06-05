@@ -1,37 +1,83 @@
-chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
-  if (changeInfo.status == 'complete' && tab.active) {
-         console.log(tab.url)
 
-         for(var k in PREFS.siteList) {
-          listedPattern = parseLocation(PREFS.siteList[k]);
-          if (match(listedPattern.domain, tab.url))
-          {     
-             chrome.tabs.executeScript(tabId, {file: "gray.js"})            
-          }
-     }
-  }
-});
 
 
 function match(suburl, url){
   return url.indexOf(suburl) >=0
 }
 
-//******************************************************
-//Below codes are modified from Strict Workflow @matchu
-//******************************************************
 function parseLocation(location) {
   var components = location.split('/');
   return {domain: components.shift(), path: components.join('/')};
 }
 
+//refactor: use decorator
+
+
+// update language
+var LANGUAGE =  loadLanguage();
+function defaultLanguage() {
+  return 'auto'
+}
+
+function loadLanguage() {
+  if(typeof localStorage['language'] !== 'undefined') {
+    return localStorage['language'];
+  } else {
+    return saveLanguage(defaultlanguage());
+  }
+}
+
+function saveLanguage(language) {
+  localStorage['language'] = language;
+  return language;
+}
+
+function setLanguage(language) {
+  LANGUAGE = saveLanguage(language);
+  return language;
+}
+
+
+
+
+// update style
+
+var STYLE =  loadStyle();
+function defaultStyle() {
+  return 'github'
+}
+
+function loadStyle() {
+  if(typeof localStorage['style'] !== 'undefined') {
+    return localStorage['style'];
+  } else {
+    return saveStyle(defaultStyle());
+  }
+}
+
+function saveStyle(style) {
+  localStorage['style'] = style;
+  console.log('style saved');
+  return style;
+}
+
+function setStyle(style) {
+  STYLE = saveStyle(style);
+  return style;
+}
+
+
+
+
+
+
+
+
 var PREFS = loadPrefs()
 
 function defaultPrefs() {
   return {
-    siteList: [
-"def foo():",
-"    return 'bar'"
+    siteList: [''
     ]
   }
 }
@@ -43,6 +89,20 @@ function loadPrefs() {
     return savePrefs(defaultPrefs());
   }
 }
+
+function savePrefs(prefs) {
+  localStorage['prefs'] = JSON.stringify(prefs);
+  return prefs;
+}
+
+function setPrefs(prefs) {
+  PREFS = savePrefs(prefs);
+  loadRingIfNecessary();
+  return prefs;
+}
+
+
+
 
 function updatePrefsFormat(prefs) {
   // Sometimes we need to change the format of the PREFS module. When just,
@@ -71,16 +131,9 @@ function updatePrefsFormat(prefs) {
   return prefs;
 }
 
-function savePrefs(prefs) {
-  localStorage['prefs'] = JSON.stringify(prefs);
-  return prefs;
-}
 
-function setPrefs(prefs) {
-  PREFS = savePrefs(prefs);
-  loadRingIfNecessary();
-  return prefs;
-}
+
+
 
 //ga
 var _gaq = _gaq || [];
