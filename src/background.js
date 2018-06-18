@@ -68,18 +68,10 @@ function setStyle(style) {
 
 
 
-
-
-
-
-
 var PREFS = loadPrefs()
 
 function defaultPrefs() {
-  return {
-    siteList: [''
-    ]
-  }
+  return {siteList: ['']}
 }
 
 function loadPrefs() {
@@ -112,8 +104,7 @@ function updatePrefsFormat(prefs) {
   
   if(prefs.hasOwnProperty('domainBlacklist')) {
     // Upon adding the whitelist feature, the domainBlacklist property was
-    // renamed to siteList for clarity.
-    
+    // renamed to siteList for clarity.s
     prefs.siteList = prefs.domainBlacklist;
     delete prefs.domainBlacklist;
     savePrefs(prefs);

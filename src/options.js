@@ -18,10 +18,9 @@ form.onsubmit = function () {
   
   return false;
 }
-		
+
 language.value = background.LANGUAGE;
 style.value = background.STYLE;
-//siteListEl.value = background.PREFS.siteList.join("\n");
 
 
 function enlighten() {
